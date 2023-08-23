@@ -1,5 +1,6 @@
 import notesImg from '../../assets/images/notes.png';
 import doubleTickImg from '../../assets/images/double-tick.png';
+import plusImg from '../../assets/images/plus.png';
 
 export default function Header() {
 	return (
@@ -11,9 +12,9 @@ export default function Header() {
 					placeholder='Type your todo'
 					className='w-full text-lg px-4 py-1 border-none outline-none bg-gray-100 text-gray-500'
 				/>
-				<button
-					type='submit'
-					className="appearance-none w-8 h-8 bg-[url('./images/plus.png')] bg-no-repeat bg-contain"></button>
+				<button type='submit' className='appearance-none w-8 h-8'>
+					<img src={plusImg} alt='' />
+				</button>
 			</form>
 
 			<ul className='flex justify-between my-4 text-xs text-gray-500'>
