@@ -9,7 +9,7 @@ import {
 } from './actionIdentifiers';
 
 const newId = (state) =>
-	state.reduce((maxId, currTodo) => Math.max(maxId, currTodo.id), 1);
+	state.reduce((maxId, currTodo) => Math.max(maxId, currTodo.id), 1) + 1;
 
 export default function todoReducer(state = initialState, action) {
 	switch (action.type) {
