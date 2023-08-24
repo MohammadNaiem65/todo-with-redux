@@ -2,7 +2,11 @@ import { useDispatch } from 'react-redux';
 import notesImg from '../../assets/images/notes.png';
 import doubleTickImg from '../../assets/images/double-tick.png';
 import plusImg from '../../assets/images/plus.png';
-import { added } from '../../redux/todos/actionCreators';
+import {
+	added,
+	allCompleted,
+	clearCompleted,
+} from '../../redux/todos/actionCreators';
 
 export default function Header() {
 	const dispatch = useDispatch();
@@ -10,6 +14,14 @@ export default function Header() {
 	const handleAddTodo = (e) => {
 		e.preventDefault();
 		dispatch(added(e.target.todoText.value));
+	};
+
+	const makeAllTodoCompleted = () => {
+		dispatch(allCompleted());
+	};
+
+	const removeCompletedTodos = () => {
+		dispatch(clearCompleted());
 	};
 
 	return (
@@ -31,7 +43,9 @@ export default function Header() {
 			</form>
 
 			<ul className='flex justify-between my-4 text-xs text-gray-500'>
-				<li className='flex space-x-1 cursor-pointer'>
+				<li
+					className='flex space-x-1 cursor-pointer'
+					onClick={makeAllTodoCompleted}>
 					<img
 						className='w-4 h-4'
 						src={doubleTickImg}
@@ -39,7 +53,9 @@ export default function Header() {
 					/>
 					<span>Complete All Tasks</span>
 				</li>
-				<li className='cursor-pointer'>Clear completed</li>
+				<li className='cursor-pointer' onClick={removeCompletedTodos}>
+					Clear completed
+				</li>
 			</ul>
 		</div>
 	);

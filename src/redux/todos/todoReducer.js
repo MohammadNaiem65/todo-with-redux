@@ -54,7 +54,13 @@ export default function todoReducer(state = initialState, action) {
 		}
 
 		case ALLCOMPLETED: {
-			return state.map((todo) => (todo.completed = true));
+			const updatedState = state.map((todo) => {
+				return {
+					...todo,
+					completed: true,
+				};
+			});
+			return updatedState;
 		}
 
 		case CLEARCOMPLETED: {
